@@ -1,0 +1,73 @@
+<launch>
+
+
+	<arg name="map_file" default="$(find navigation_under_namespace)/maps/twoRooms.yaml" />
+	<arg name="base" default="$(optenv TURTLEBOT_BASE kobuki)" />  <!-- create, rhoomba -->
+	<arg name="stacks" default="$(optenv TURTLEBOT_STACKS hexagons)" />  <!-- circles, hexagons -->
+	<arg name="3d_sensor" default="$(optenv TURTLEBOT_3D_SENSOR kinect)" />  <!-- kinect, asus_xtion_pro -->
+	<arg name="custom_param_file" default="$(find turtlebot_navigation)/param/dummy.yaml"/>
+	<arg name="central_master_name" default="10.42.0.100"/>
+	<!-- <param name="/use_sim_time" value="true" /> -->
+
+
+
+
+	<!-- ***************** Robot Model ***************** -->
+
+<arg name="namespace" default="robot_0"/>
+ <arg name="initial_pose_x" default="0"/>
+ <arg name="initial_pose_y" default="0"/>
+ <arg name="initial_pose_a" default="0"/>
+ <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" respawn="false" >
+    <param name="frame_id" value="/map" />
+  </node>
+ 
+ <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+      <remap from="map" to="/map" />
+      <param name="controller_frequency" value="10.0" />
+      <rosparam file="$(find navigation_under_namespace)/params/move_base_config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find navigation_under_namespace)/params/move_base_config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find navigation_under_namespace)/params/move_base_config/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find navigation_under_namespace)/params/move_base_config/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find navigation_under_namespace)/params/move_base_config/base_local_planner_params.yaml" command="load" />
+    </node>
+    
+    
+	
+     <include file="$(find navigation_under_namespace)/launch/includes/amcl.launch">
+	 	<arg name="tf_prefix" value="$(arg namespace)"/>
+		<arg name="scan_topic" value="scan" />
+		<arg name="use_map_topic" value="true" />
+		<arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+		<arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+		<arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+		<arg name="global_frame_id" value="/map"/>
+	</include>
+	
+
+	
+	
+	<include file="$(find navigation_under_namespace)/launch/includes/turtlebot_minimal.launch">
+		<arg name="base" value="$(arg base)" />
+		<arg name="stacks" value="$(arg stacks)" />
+		<arg name="3d_sensor" value="$(arg 3d_sensor)" />
+		<arg name="namespace" value="$(arg namespace)"/>
+	</include>
+	<!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"> 
+		<param name="use_gui" value="true" /> </node> -->
+	<include file="$(find navigation_under_namespace)/launch/includes/3dsensor.launch">
+		<arg name="rgb_processing" value="false" />
+		<arg name="depth_registration" value="false" />
+		<arg name="depth_processing" value="false" />
+
+		
+		<arg name="scan_topic" value="scan" />
+	</include>
+	
+
+	
+
+
+
+
+</launch>
