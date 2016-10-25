@@ -1,7 +1,5 @@
 <launch>
 	<arg name="robotName1" default="robot_0" />
-	<group ns="robot_0">
-		<param name="tf_prefix" value="$(arg robotName1)" />
 		<include
 			file="$(find navigation_under_namespace)/launch/includes/single_robot_wild.launch">
 			<arg name="namespace" value="$(arg robotName1)" />
@@ -9,5 +7,4 @@
 			<arg name="initial_pose_y" value="0.0" />
 			<arg name="initial_pose_a" value="0.0" />
 		</include>
-	</group>
 </launch>

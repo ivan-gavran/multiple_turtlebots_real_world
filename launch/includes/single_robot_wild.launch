@@ -23,6 +23,7 @@
   </node>
  
  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+ 	  <arg name="tf_prefix" value="$(arg namespace)"/>
       <remap from="map" to="/map" />
       <param name="controller_frequency" value="10.0" />
       <rosparam file="$(find navigation_under_namespace)/params/move_base_config/costmap_common_params.yaml" command="load" ns="global_costmap" />

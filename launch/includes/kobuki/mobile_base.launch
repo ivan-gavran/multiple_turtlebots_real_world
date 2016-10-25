@@ -1,5 +1,6 @@
 <!-- Kobuki's implementation of turtlebot's mobile base. -->
 <launch>
+	
 	<arg name="serialport" /> <!-- TODO: use the serialport parameter to set the serial port of kobuki -->
 	<arg name="namespace"/>
 	<node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager"

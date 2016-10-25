@@ -4,7 +4,7 @@
 <launch>
   <include file="$(find turtlebot_navigation)/launch/includes/velocity_smoother.launch.xml"/>
   <include file="$(find turtlebot_navigation)/launch/includes/safety_controller.launch.xml"/>
-  
+  <arg name="tf_prefix" default="tf_p"/>
   <arg name="odom_frame_id"   default="odom"/>
   <arg name="base_frame_id"   default="base_footprint"/>
   <arg name="global_frame_id" default="/map"/>
@@ -27,15 +27,15 @@
      
     <!-- reset frame_id parameters using user input data -->
     
-    <param name="global_costmap/global_frame" value="$(arg global_frame_id)"/>
-    <param name="global_costmap/robot_base_frame" value="$(arg base_frame_id)"/>
-    <param name="local_costmap/global_frame" value="$(arg odom_frame_id)"/>
-    <param name="local_costmap/robot_base_frame" value="$(arg base_frame_id)"/>
-    <param name="DWAPlannerROS/global_frame_id" value="$(arg odom_frame_id)"/>
+    <param name="global_costmap/global_frame" value="$(arg tf_prefix)/$(arg global_frame_id)"/>
+    <param name="global_costmap/robot_base_frame" value="$(arg tf_prefix)/$(arg base_frame_id)"/>
+    <param name="local_costmap/global_frame" value="$(arg tf_prefix)/$(arg odom_frame_id)"/>
+    <param name="local_costmap/robot_base_frame" value="$(arg tf_prefix)/$(arg base_frame_id)"/>
+    <param name="DWAPlannerROS/global_frame_id" value="$(arg tf_prefix)/$(arg odom_frame_id)"/>
 
     <remap from="cmd_vel" to="navigation_velocity_smoother/raw_cmd_vel"/>
-    <remap from="odom" to="$(arg odom_topic)"/>
-    <remap from="scan" to="$(arg laser_topic)"/>
+    <remap from="odom" to="$(arg tf_prefix)/$(arg odom_topic)"/>
+    <remap from="scan" to="$(arg tf_prefix)/$(arg laser_topic)"/>
   </node>
 </launch>
 
