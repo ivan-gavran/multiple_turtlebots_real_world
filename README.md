@@ -7,6 +7,10 @@ In this attempt I failed to do it myself, and hope that we can together accompli
 First and crucial step is to launch a single robot under namespace (once that is done, the rest should be pretty easy).
 
 ## Current state
+
+**EDIT**:
+as baeckermeister commented in the Issues section, he found the solution to the problem. I was not able to integrate it with this code (I failed few times and later I neglected it). Another integration attempt - this time to the end :) - is happening right now...
+
  Currently, the attempt to launch a single robot under namespace with amcl failed. The tf tree looks like [this](https://dl.dropboxusercontent.com/u/11955498/framesTurtlebotUnderNamespace.pdf). The link between */map* and *robot\_0/odom* is missing. Amcl should be publishing this connection.<br/><br/>
 The messages from console are following:<br/>
 
