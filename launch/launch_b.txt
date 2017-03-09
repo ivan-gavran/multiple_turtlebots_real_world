@@ -1,0 +1,12 @@
+<launch>
+	
+	<include file="$(find navigation_under_namespace)/launch/includes/minimal.launch.xml"/>
+	
+	<!--
+	<include file="$(find navigation_under_namespace)/launch/includes/sick_tim571_2050101.launch.xml"/>
+	-->
+	<include file="$(find navigation_under_namespace)/launch/includes/amcl.launch.xml"/>
+	
+	<include file="$(find navigation_under_namespace)/launch/includes/move_base.launch.xml"/>
+
+</launch>
