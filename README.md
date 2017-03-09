@@ -3,8 +3,14 @@
 The goal of this repository is to create a launch file for two turtlebots under namespaces with navigation stack. The similar attempt for stage simulator ended successfully in [this repository](https://github.com/gergia/multiple_turtlebots_stage_amcl).
 In this attempt I failed to do it myself, and hope that we can together accomplish it and have it as a reference for future, as it seems to be a question that bothers many. Therefore, build upon! (of course, if you have a ready solution, just let us know, link it, add it or whatever you find suitable).<br/> Also, add to this README file your conclusions.
 
+This branch is the code rewritten according to discussion in Issue 1.
+
 ## First step
 First and crucial step is to launch a single robot under namespace (once that is done, the rest should be pretty easy).
+
+## Running 
+The environment variable $ROS_NAMESPACE should be set to `robot_1` (or any chosen namespace value).
+The system is launched with `roslaunch navigation\_under\_namespace launch_b.txt`
 
 ## Current state
 
