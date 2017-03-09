@@ -7,7 +7,7 @@
   <arg name="initial_pose_a"  default="0.0"/>
   <arg name="odom_frame_id"   default="$(env ROS_NAMESPACE)/odom"/>
   <arg name="base_frame_id"   default="$(env ROS_NAMESPACE)/base_footprint"/>
-  <arg name="global_frame_id" default="/map"/>
+  <arg name="global_frame_id" default="map"/>
 
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <!--param name="tf_prefix"		value="$(env ROS_NAMESPACE)"/-->
