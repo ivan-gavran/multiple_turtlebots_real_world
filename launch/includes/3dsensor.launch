@@ -80,4 +80,6 @@
     </node>
   </group>
   
+  <node pkg="tf" type="static_transform_publisher" name="sick_tf" args="0.15 0 0 0 0 3.14159265 $(env ROS_NAMESPACE)/plate_bottom_link $(env ROS_NAMESPACE)/laser 100"/>
+  
 </launch>

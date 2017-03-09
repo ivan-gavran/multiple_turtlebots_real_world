@@ -16,9 +16,7 @@
   <param name="robot/name" value="$(optenv ROBOT turtlebot)"/>
   <param name="robot/type" value="turtlebot"/>
   
-  <!--
-  commenting this out because the same is accomplished by 3dsensor.launch. Tried both variants, but the result is the same.
-   
+  
   
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="5.0" />
@@ -26,7 +24,7 @@
     <remap from="/camera_rgb_frame" to="/$(env ROS_NAMESPACE)/camera_rgb_frame"/>
     <remap from="/camera_link" to="/$(env ROS_NAMESPACE)/camera_link"/>
   </node>
-   -->
+  
 
   <node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator" >
     <rosparam command="load" file="$(find turtlebot_bringup)/param/$(arg base)/diagnostics.yaml" />
