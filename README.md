@@ -1,5 +1,16 @@
-# Launching two turtlebots under namespaces with navigation stack 
+# Launching two turtlebots under namespaces with navigation stack [solved]
+This repository contains the launch files to launch a (real-world) turtlebot under a namespace. (Which is a key step towards launching multiple turtlebots all sharing a single master. This part would also be added.) 
+It is similar in spirit to [this repository](https://github.com/gergia/multiple_turtlebots_stage_amcl), where the same was done for the simulation in Stage simulator. 
 
+As a side note, running multiple turtlebots under the same master can (according to experiences of others) result in the performance issues. (The alternative solution would be that each TurtleBot runs its own master and that certain topics are shared using [multimaster_fkie](http://wiki.ros.org/multimaster_fkie) or something similar. (In this solution too it is good, though not necessary, to have robots under namespaces).
+
+Many thanks for the help in setting this up and debugging to amiller27 and baeckermeister.
+
+-----
+
+<br /><br /><br /><br />
+
+This is the part describing typical problems I was facing before the solution was found (old README file, while this was still a work in progress):<br/>
 The goal of this repository is to create a launch file for two turtlebots under namespaces with navigation stack. The similar attempt for stage simulator ended successfully in [this repository](https://github.com/gergia/multiple_turtlebots_stage_amcl).
 In this attempt I failed to do it myself, and hope that we can together accomplish it and have it as a reference for future, as it seems to be a question that bothers many. Therefore, build upon! (of course, if you have a ready solution, just let us know, link it, add it or whatever you find suitable).<br/> Also, add to this README file your conclusions.
 
