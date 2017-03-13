@@ -18,9 +18,6 @@
  <arg name="initial_pose_x" default="0"/>
  <arg name="initial_pose_y" default="0"/>
  <arg name="initial_pose_a" default="0"/>
- <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" respawn="false" >
-    <param name="frame_id" value="/map" />
-  </node>
  
  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
       <remap from="map" to="/map" />
@@ -60,7 +57,7 @@
 		<arg name="rgb_processing" value="false" />
 		<arg name="depth_registration" value="false" />
 		<arg name="depth_processing" value="false" />
-		<arg name="publish_tf" value="true"/>
+		<arg name="publish_tf" value="false"/>
 
 		
 		<arg name="scan_topic" value="scan" />
