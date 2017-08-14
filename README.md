@@ -22,7 +22,7 @@ First and crucial step is to launch a single robot under namespace (once that is
 **EDIT**:
 as baeckermeister commented in the Issues section, he found the solution to the problem. I was not able to integrate it with this code (I failed few times and later I neglected it). Another integration attempt - this time to the end :) - is happening right now...
 
- Currently, the attempt to launch a single robot under namespace with amcl failed. The tf tree looks like [this](https://dl.dropboxusercontent.com/u/11955498/framesTurtlebotUnderNamespace.pdf). The link between */map* and *robot\_0/odom* is missing. Amcl should be publishing this connection.<br/><br/>
+ Currently, the attempt to launch a single robot under namespace with amcl failed. The tf tree link between */map* and *robot\_0/odom* is missing. Amcl should be publishing this connection.<br/><br/>
 The messages from console are following:<br/>
 
 *  */robot\_0/amcl: No laser scan received (and thus no pose updates have been published) for 1462444802.174762 seconds.  Verify that data is being published on the /robot\_0/scan topic.*  : checked, data is being published at /robot\_0/scan <br/>
